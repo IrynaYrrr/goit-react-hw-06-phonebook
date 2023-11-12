@@ -1,7 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../store/redux/contactSlice";
 import css from "./ContactList.module.css";
 
-export const ContactList = ({ contacts, handleDelete }) => {
+
+export const ContactList = ({ contacts, contact }) => {
+
+  const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deleteContact(contact.id));
+
   return (
     <div className={css.contactsWrap}>
       <ul>

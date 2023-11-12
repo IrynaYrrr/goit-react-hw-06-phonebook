@@ -1,32 +1,16 @@
-import { combineReducers } from 'redux'
-// import { reducerTodo } from './todo/reducer'
-import { todoReducer } from './todo/slice'
+import { contactReducer } from './redux/contactSlice';
+import { persistReducer } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage'
-import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-	key: 'root',
-	storage,
-	blacklist: ['password'],
-	// whitelist:['todo']
+  key: 'root',
+  storage,
+whitelist:['contact']
 }
 
-const persistConfig2 = {
-	key: 'other',
-	storage,
-}
+const persistedReducer = persistReducer(persistConfig, contactReducer)
 
-const persistedReducer = persistReducer(persistConfig, todoReducer)
-
-const otherReducers = combineReducers({
-	users: todoReducer,
-	items: todoReducer,
-	password: todoReducer,
+export const reducer = ({
+  contact: persistedReducer,
 })
-const persistedReducer2 = persistReducer(persistConfig2, otherReducers)
-
-export const reducer = {
-	todo: persistedReducer,
-	other: persistedReducer2,
-}
