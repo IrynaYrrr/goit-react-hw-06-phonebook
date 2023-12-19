@@ -5,12 +5,14 @@ import css from "./ContactList.module.css";
 
 
 export const ContactList = ({ contact }) => {
-	const {contacts} = useSelector((store) => store.state)
+
+	const {contacts} = useSelector((store) => store.contacts)
+
   console.log(contacts);
 
   const dispatch = useDispatch();
 
-  const handleDelete = () => dispatch(deleteContact(contact.id));
+  const handleDelete = (id) => dispatch(deleteContact(id));
 
   return (
     <div className={css.contactsWrap}>

@@ -1,3 +1,3 @@
-export const statusSearch = Object.freeze({
+export const statusFilter = Object.freeze({
   all: "all",
 });
