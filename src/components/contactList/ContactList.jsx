@@ -4,20 +4,27 @@ import { deleteContact } from "../../store/redux/contactSlice";
 import css from "./ContactList.module.css";
 
 
-export const ContactList = ({ contact }) => {
+export const ContactList = ({ filter }) => {
 
 	const {contacts} = useSelector((store) => store.contacts)
-
-  console.log(contacts);
 
   const dispatch = useDispatch();
 
   const handleDelete = (id) => dispatch(deleteContact(id));
 
+  const getFilteredContacts = () => {
+    console.log(contacts);
+    return contacts.filter((el) =>
+      el.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  const filtered = getFilteredContacts();
+
   return (
     <div className={css.contactsWrap}>
       <ul>
-        {contacts.map(({id, number, name}) =>
+        {filtered.map(({id, number, name}) =>
             <li className={css.contactItem} key={id}>
               <div>{name}: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{number}</div>
               <div>

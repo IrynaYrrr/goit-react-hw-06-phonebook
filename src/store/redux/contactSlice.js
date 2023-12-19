@@ -13,7 +13,6 @@ const contactSlice = createSlice({
       prepare: createObjectContact,
     },
     deleteContact(state, {payload}) {
-      console.log(state);
       const index = state.contacts.findIndex(contact => contact.id === payload);
       state.contacts.splice(index, 1);
     }

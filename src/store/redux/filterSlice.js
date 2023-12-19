@@ -12,7 +12,5 @@ const filterSlice = createSlice({
   },
 });
 
-console.log(filterInitialState);
-
 export const { setStatusFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
