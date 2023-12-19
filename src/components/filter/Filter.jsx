@@ -4,8 +4,6 @@ import css from "./Filter.module.css";
 
 export const Filter = ({ onChange }) => {
 
-
-
   const handleChange = evt => {
     const { value } = evt.target;
     onChange(value);
