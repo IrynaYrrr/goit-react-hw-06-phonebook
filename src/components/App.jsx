@@ -14,21 +14,13 @@ const headersStyles = {
 
 export const App = () => {
 
-  const [filter, setFilter] = useState('');
-
-  const handleFilterChange = (value) => {
-    setFilter(value)
-  }
-
   return (
     <div>
       <h1 style={headersStyles}>Phonebook</h1>
       <ContactForm/>
       <h2 style={headersStyles}>Contacts</h2>
-      <Filter
-        onChange={handleFilterChange}
-      />
-      <ContactList filter={filter}/>
+      <Filter />
+      <ContactList />
     </div>
   )
 }
