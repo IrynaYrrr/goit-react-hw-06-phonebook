@@ -1,14 +1,19 @@
 import React from "react";
 import css from "./Filter.module.css";
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'store/redux/filterSlice';
 
 
-export const Filter = ({ onChange }) => {
+export const Filter = () => {
+
+  const dispatch = useDispatch();
+
+  const handleFilterChange = (value) => dispatch(setFilter(value));
 
   const handleChange = evt => {
     const { value } = evt.target;
-    onChange(value);
+    handleFilterChange(value);
   };
-
 
   return (
     <label className={css.label}>

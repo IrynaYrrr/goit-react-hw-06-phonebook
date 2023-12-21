@@ -4,16 +4,17 @@ import { deleteContact } from "../../store/redux/contactSlice";
 import css from "./ContactList.module.css";
 
 
-export const ContactList = ({ filter }) => {
+export const ContactList = () => {
 
 	const {contacts} = useSelector((store) => store.contacts)
+	const {filter} = useSelector((store) => store.filter)
+
 
   const dispatch = useDispatch();
 
   const handleDelete = (id) => dispatch(deleteContact(id));
 
   const getFilteredContacts = () => {
-    console.log(contacts);
     return contacts.filter((el) =>
       el.name.toLowerCase().includes(filter.toLowerCase())
     );
